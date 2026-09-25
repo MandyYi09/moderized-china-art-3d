@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101c1c" />
+  <meta name="description" content="The Keeper of the Cloud Gate — an original celestial sculpture, inspired by traditional Chinese guardian paintings. Explore in three dimensions." />
+  <title>Cloud Gate · An interactive sculpture</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23101c1c'/%3E%3Ccircle cx='20' cy='20' r='13' fill='none' stroke='%23d4b879'/%3E%3Cpath d='M12 28V17l8-8 8 8v11' fill='none' stroke='%23d4b879'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Cloud Gate home"><span class="brand-mark">雲</span><span>CLOUD GATE <i>STUDIO</i></span></a>
+      <div class="edition"><span class="tiny-dot"></span> AN EXPLORATION IN FORM <span class="edition-num">№ 001 / 2026</span></div>
+      <button class="text-button" id="about-open">About the work <span>↗</span></button>
+    </header>
+
+    <aside class="story">
+      <div class="eyebrow"><span class="short-line"></span> THE CELESTIAL COLLECTION</div>
+      <div class="chinese-title" lang="zh">雲門守望</div>
+      <h1>The Keeper<br>of the<br><em>Cloud Gate.</em></h1>
+      <p class="intro">Between stillness and sky.<br>A guardian of an imagined realm,<br>cast in jade, lacquer, and light.</p>
+      <div class="medium"><span>01</span><p>ORIGINAL DIGITAL SCULPTURE<br><small>Inspired by traditional Chinese painting</small></p></div>
+      <button id="concept-open" class="concept-card"><img src="/artwork/cloud-gate-concept.png" alt="Original concept artwork of the jade guardian" /><span>FROM PAINTING<br><strong>See the concept</strong></span><span class="arrow">↗</span></button>
+      <div class="story-foot">PAST TRADITIONS. NEW DIMENSIONS.</div>
+    </aside>
+
+    <main id="stage" aria-label="Interactive 3D sculpture. Drag to orbit, scroll to zoom, right-drag to pan." tabindex="0">
+      <div class="stage-vignette"></div>
+      <div id="loading"><div class="loading-ring"></div><p>Opening the cloud gate</p><small>Building the sculpture…</small></div>
+      <div class="scene-label"><span class="tiny-dot"></span> LIVE 3D <span id="view-label">The complete work</span></div>
+      <div id="annotation" hidden><span id="annotation-number">01</span><div><strong id="annotation-title"></strong><p id="annotation-body"></p></div></div>
+      <div class="stage-bottom">
+        <div class="gesture"><span>↔</span> Drag to orbit <b>·</b> Scroll to explore</div>
+        <div class="camera-tools"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="reset" aria-label="Reset view" title="Reset view (R)">⌂</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">＋</button><span></span><button id="fullscreen" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button></div>
+      </div>
+    </main>
+
+    <aside class="inspector" aria-label="Sculpture controls">
+      <div class="panel-heading">EXPLORE THE WORK <span>↙</span></div>
+      <div class="view-list" aria-label="Camera viewpoints">
+        <button class="view-button active" data-view="whole"><span>01</span> The complete work <i>↗</i></button>
+        <button class="view-button" data-view="crown"><span>02</span> Crown & countenance <i>↗</i></button>
+        <button class="view-button" data-view="armor"><span>03</span> The gilded armor <i>↗</i></button>
+        <button class="view-button" data-view="lotus"><span>04</span> Above the lotus <i>↗</i></button>
+        <button class="view-button" data-view="reverse"><span>05</span> The unseen side <i>↗</i></button>
+      </div>
+      <div class="control-section"><div class="section-label">ATMOSPHERE</div><div class="lighting-options"><button class="lighting active" data-light="gallery"><span class="swatch gallery"></span>Gallery</button><button class="lighting" data-light="moon"><span class="swatch moon"></span>Moonlit</button><button class="lighting" data-light="dawn"><span class="swatch dawn"></span>Dawn</button></div></div>
+      <div class="control-section"><div class="section-label">PRESENTATION</div>
+        <label class="toggle-row">Slow rotation<input type="checkbox" id="rotate" /><span class="switch"></span></label>
+        <label class="toggle-row">Living atmosphere<input type="checkbox" id="motion" checked /><span class="switch"></span></label>
+        <label class="toggle-row">Cloud formations<input type="checkbox" id="clouds" checked /><span class="switch"></span></label>
+        <label class="toggle-row">Study the wireframe<input type="checkbox" id="wireframe" /><span class="switch"></span></label>
+      </div>
+      <div class="export-section"><button id="capture" class="outline-button">Save a still <span>↓</span></button><a href="/models/cloud-gate.glb" download="cloud-gate.glb" class="text-button download-model">Download 3D model <span>↗</span></a></div>
+      <div class="material-note"><span class="material-dot"></span> JADE · CINNABAR · ANTIQUE GOLD</div>
+    </aside>
+    <footer><span>A STUDY OF MYTH, MATERIAL & MOVEMENT</span><span id="model-stats">Hand-built in three dimensions</span><button id="help-open">Controls <span>?</span></button></footer>
+  </div>
+
+  <dialog id="concept-dialog" class="concept-dialog"><button class="close-dialog" aria-label="Close">×</button><div class="concept-image"><img src="/artwork/cloud-gate-concept.png" alt="The Keeper of the Cloud Gate — original concept artwork" /></div><div class="concept-text"><div class="eyebrow">THE ORIGINAL CONCEPT</div><h2>From pigment<br>to <em>presence.</em></h2><p>The reference paintings offered a visual language: jade clouds, cinnabar armor, lapis outlines, and ribbons suspended in motion.</p><p>This new guardian brings those elements into an imagined sculptural world. The concept artwork was created first; the explorable sculpture is a handcrafted procedural interpretation, with its own geometry, proportions, and details.</p><div class="palette"><span style="background:#76a88c"></span><span style="background:#af4940"></span><span style="background:#244d5a"></span><span style="background:#c5a16a"></span><span style="background:#c7847c"></span></div><a class="outline-button" href="/artwork/cloud-gate-concept.png" download>Download the artwork <span>↓</span></a></div></dialog>
+  <dialog id="about-dialog" class="text-dialog"><button class="close-dialog" aria-label="Close">×</button><div class="eyebrow">ABOUT THE WORK</div><h2>A threshold<br>between <em>worlds.</em></h2><p><em>The Keeper of the Cloud Gate</em> is an original fantasy guardian inspired by the supplied traditional Chinese guardian paintings. It does not represent a specific historical deity.</p><p>A moon-tipped staff marks the boundary of the celestial realm. An open hand carries a pearl of light. Around the figure, ribbons trace the wind, clouds gather, and a lotus anchors the suspended world.</p><p>The sculpture is modeled entirely from three-dimensional surfaces: layered armor, individually shaped facial features, openwork crown blades, raised spirals, petal forms, and curved ribbons. Orbit behind it to discover the reverse medallion and hanging cords.</p><div class="about-meta"><span>CONCEPT</span> Original AI-assisted artwork<br><span>SCULPTURE</span> Procedural Three.js geometry<br><span>FORMAT</span> Interactive scene + portable GLB</div></dialog>
+  <dialog id="help-dialog" class="text-dialog"><button class="close-dialog" aria-label="Close">×</button><div class="eyebrow">FIND YOUR PERSPECTIVE</div><h2>Take a <em>closer look.</em></h2><dl><dt>Orbit</dt><dd>Drag with one finger or the left mouse button</dd><dt>Zoom</dt><dd>Pinch, scroll, or use + / −</dd><dt>Pan</dt><dd>Two-finger drag or right mouse button</dd><dt>Reset view</dt><dd>R</dd><dt>Pause atmosphere</dt><dd>Space</dd><dt>Wireframe</dt><dd>W</dd></dl></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

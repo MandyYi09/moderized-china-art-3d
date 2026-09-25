@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { Box3 } from 'three';
+import { createSculpture } from '../src/sculpture.js';
+const {root,parts}=createSculpture();let triangles=0,meshes=0;
+root.traverse(o=>{if(!o.isMesh)return;meshes++;const p=o.geometry.attributes.position;assert(p.count>0,`${o.name}: empty geometry`);for(const value of p.array)assert(Number.isFinite(value),`${o.name}: invalid vertex`);const normal=o.geometry.attributes.normal;assert(normal,`${o.name}: missing normals`);for(const value of normal.array)assert(Number.isFinite(value),`${o.name}: invalid normal`);triangles+=(o.geometry.index?.count??p.count)/3;});
+assert.equal(Object.keys(parts).length,6);assert(meshes>20);assert(triangles>100000);
+const bounds=new Box3().setFromObject(root);assert(bounds.max.y>8);assert(bounds.min.z<-.5);assert(bounds.max.z>1);
+const glb=await readFile(new URL('../public/models/cloud-gate.glb',import.meta.url));assert.equal(glb.toString('ascii',0,4),'glTF');assert.equal(glb.readUInt32LE(4),2);assert.equal(glb.readUInt32LE(8),glb.length);
+const jsonSize=glb.readUInt32LE(12),json=JSON.parse(glb.toString('utf8',20,20+jsonSize));assert(json.meshes.length>=meshes);assert(json.materials.length>=10);
+console.log(JSON.stringify({status:'passed',meshes,triangles,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},glbBytes:glb.length},null,2));
