@@ -1,3 +1,9 @@
 node_modules/
 dist/
 .DS_Store
+
+.vscode/
+
+public/artwork/head-v3-*.png
+
+public/artwork/viewer-v*.png

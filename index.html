@@ -19,8 +19,8 @@
     <aside class="story">
       <div class="eyebrow"><span class="short-line"></span> THE CELESTIAL COLLECTION</div>
       <div class="chinese-title" lang="zh">雲門守望</div>
-      <h1>The Keeper<br>of the<br><em>Cloud Gate.</em></h1>
-      <p class="intro">Between stillness and sky.<br>A guardian of an imagined realm,<br>cast in jade, lacquer, and light.</p>
+      <h1>The Keeper<br>of the<br> <em>Cloud Gate.</em></h1>
+      <p class="intro">Between stillness and sky.<br> A guardian of an imagined realm,<br> cast in jade, lacquer, and light.</p>
       <div class="medium"><span>01</span><p>ORIGINAL DIGITAL SCULPTURE<br><small>Inspired by traditional Chinese painting</small></p></div>
       <button id="concept-open" class="concept-card"><img src="/artwork/cloud-gate-concept.png" alt="Original concept artwork of the jade guardian" /><span>FROM PAINTING<br><strong>See the concept</strong></span><span class="arrow">↗</span></button>
       <div class="story-foot">PAST TRADITIONS. NEW DIMENSIONS.</div>
@@ -29,16 +29,17 @@
     <main id="stage" aria-label="Interactive 3D sculpture. Drag to orbit, scroll to zoom, right-drag to pan." tabindex="0">
       <div class="stage-vignette"></div>
       <div id="loading"><div class="loading-ring"></div><p>Opening the cloud gate</p><small>Building the sculpture…</small></div>
-      <div class="scene-label"><span class="tiny-dot"></span> LIVE 3D <span id="view-label">The complete work</span></div>
-      <div id="annotation" hidden><span id="annotation-number">01</span><div><strong id="annotation-title"></strong><p id="annotation-body"></p></div></div>
+      <div class="scene-label"><span class="tiny-dot"></span> <strong id="revision-label">V3 · 参考头部</strong> <span id="view-label">The complete work</span></div>
+      <div id="annotation" role="region" aria-labelledby="annotation-title" hidden><button id="annotation-close" aria-label="关闭说明" title="关闭说明">×</button><span id="annotation-number">01</span><div><strong id="annotation-title"></strong><p id="annotation-body"></p></div></div>
       <div class="stage-bottom">
         <div class="gesture"><span>↔</span> Drag to orbit <b>·</b> Scroll to explore</div>
-        <div class="camera-tools"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="reset" aria-label="Reset view" title="Reset view (R)">⌂</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">＋</button><span></span><button id="fullscreen" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button></div>
+        <div class="camera-tools"><button id="annotation-toggle" aria-label="查看说明" title="查看说明" aria-controls="annotation" aria-expanded="false" hidden>ⓘ</button><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><button id="reset" aria-label="Reset view" title="Reset view (R)">⌂</button><button id="zoom-in" aria-label="Zoom in" title="Zoom in">＋</button><span></span><button id="fullscreen" aria-label="Toggle fullscreen" title="Fullscreen">⛶</button></div>
       </div>
     </main>
 
     <aside class="inspector" aria-label="Sculpture controls">
       <div class="panel-heading">EXPLORE THE WORK <span>↙</span></div>
+      <div class="version-compare" aria-label="模型版本对比"><button data-version="1" aria-pressed="false">V1 旧版</button><button data-version="2" class="active" aria-pressed="true">V3 新版</button><small id="version-note">新版：参考五官 · 立体面部 · 重塑冠饰</small></div>
       <div class="view-list" aria-label="Camera viewpoints">
         <button class="view-button active" data-view="whole"><span>01</span> The complete work <i>↗</i></button>
         <button class="view-button" data-view="crown"><span>02</span> Crown & countenance <i>↗</i></button>
@@ -53,7 +54,7 @@
         <label class="toggle-row">Cloud formations<input type="checkbox" id="clouds" checked /><span class="switch"></span></label>
         <label class="toggle-row">Study the wireframe<input type="checkbox" id="wireframe" /><span class="switch"></span></label>
       </div>
-      <div class="export-section"><button id="capture" class="outline-button">Save a still <span>↓</span></button><a href="/models/cloud-gate.glb" download="cloud-gate.glb" class="text-button download-model">Download 3D model <span>↗</span></a></div>
+      <div class="export-section"><button id="capture" class="outline-button">Save a still <span>↓</span></button><a href="/models/cloud-gate.glb" download="cloud-gate.glb" class="text-button download-model">Download current model <span>↗</span></a></div>
       <div class="material-note"><span class="material-dot"></span> JADE · CINNABAR · ANTIQUE GOLD</div>
     </aside>
     <footer><span>A STUDY OF MYTH, MATERIAL & MOVEMENT</span><span id="model-stats">Hand-built in three dimensions</span><button id="help-open">Controls <span>?</span></button></footer>
