@@ -7,3 +7,5 @@ dist/
 public/artwork/head-v3-*.png
 
 public/artwork/viewer-v*.png
+
+versions/*/*.png
