@@ -110,7 +110,7 @@ async function switchVersion(revision){
   Object.assign(window.cloudGate,{sculpture,parts,stats:{triangles,meshes},revision});
   $('#revision-label').textContent=revision===2?'V3 · 参考头部':'V1 · 原始模型';
   $('#version-note').textContent=revision===2?'新版：参考五官 · 立体面部 · 重塑冠饰':'旧版：空心大圆环 · 光滑材质 · 简化甲片';
-  $('#model-stats').textContent=`V${revision} · ${Math.round(triangles/1000)}k faces · Fully sculpted in 3D`;
+  $('#model-stats').textContent=`V${revision === 2 ? 3 : revision} · ${Math.round(triangles/1000)}k faces · Fully sculpted in 3D`;
   setAnnotationOpen(false);
   buttons.forEach(b=>{const active=Number(b.dataset.version)===revision;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
  }catch(error){console.error(error);toast('版本切换失败，请刷新后重试。');}
@@ -138,7 +138,7 @@ $('#zoom-in').addEventListener('click',()=>zoom(.8));$('#zoom-out').addEventList
 $('#fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $('#app').requestFullscreen();}catch{toast('Fullscreen is unavailable in this browser.');}});
 $('#capture').addEventListener('click',()=>{
   if(!state.ready)return;
-  try{renderer.render(scene,camera);const canvas=document.createElement('canvas');canvas.width=renderer.domElement.width;canvas.height=renderer.domElement.height;const ctx=canvas.getContext('2d');ctx.fillStyle=state.lighting==='moon'?'#15252c':state.lighting==='dawn'?'#282722':'#152520';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(renderer.domElement,0,0);canvas.toBlob(blob=>{if(!blob){toast('Could not capture this view.');return;}const a=document.createElement('a');const url=URL.createObjectURL(blob);a.href=url;a.download=`cloud-gate-v${state.revision}-still.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);toast('Your view has been saved.');});}catch{toast('Could not capture this view. Please try again.');}
+  try{renderer.render(scene,camera);const canvas=document.createElement('canvas');canvas.width=renderer.domElement.width;canvas.height=renderer.domElement.height;const ctx=canvas.getContext('2d');ctx.fillStyle=state.lighting==='moon'?'#15252c':state.lighting==='dawn'?'#282722':'#152520';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(renderer.domElement,0,0);canvas.toBlob(blob=>{if(!blob){toast('Could not capture this view.');return;}const a=document.createElement('a');const url=URL.createObjectURL(blob);a.href=url;a.download=`cloud-gate-v${state.revision === 2 ? 3 : state.revision}-still.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);toast('Your view has been saved.');});}catch{toast('Could not capture this view. Please try again.');}
 });
 document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||['INPUT','BUTTON','A','TEXTAREA','SELECT'].includes(document.activeElement.tagName))return;if(e.key.toLowerCase()==='r')showView('whole');if(e.key.toLowerCase()==='w'){$('#wireframe').click();}if(e.code==='Space'){e.preventDefault();$('#motion').click();}});
 new ResizeObserver(resize).observe(stage);
